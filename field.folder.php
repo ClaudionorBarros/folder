@@ -63,7 +63,9 @@ class Field_folder
                 pyro.lang.untitled_folder = '".lang('files:untitled_folder')."';
                 pyro.lang.exceeds_server_setting = '".lang('files:exceeds_server_setting')."';
                 pyro.lang.exceeds_allowed = '".lang('files:exceeds_allowed')."';
-                pyro.files = { permissions : ".$permissions." };
+                //pyro.files = { permissions : ".$permissions." };
+                //Use default permissions
+                pyro.files = { permissions : ".json_encode(Files::allowed_actions())." };
                 pyro.files.max_size_possible = '".Files::$max_size_possible."';
                 pyro.files.max_size_allowed = '".Files::$max_size_allowed."';
                 pyro.files.valid_extensions = '".implode('|', $allowed_extensions)."';
@@ -72,6 +74,9 @@ class Field_folder
                 pyro.lang.alt_attribute = '".addslashes(lang('files:alt_attribute'))."';
 
                 pyro.files.initial_folder_contents = ".(int)$folder_id.";
+                $(function(){
+                    $('span#crumb-root > a').attr('data-id', '".(int)$folder_id."');
+                });
             </script>");
 
         Asset::add_path('files_module', APPPATH.'modules/files/');
