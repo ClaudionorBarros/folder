@@ -63,9 +63,7 @@ class Field_folder
                 pyro.lang.untitled_folder = '".lang('files:untitled_folder')."';
                 pyro.lang.exceeds_server_setting = '".lang('files:exceeds_server_setting')."';
                 pyro.lang.exceeds_allowed = '".lang('files:exceeds_allowed')."';
-                //pyro.files = { permissions : ".$permissions." };
-                //Use default permissions
-                pyro.files = { permissions : ".json_encode(Files::allowed_actions())." };
+                pyro.files = { permissions : ".$permissions." };
                 pyro.files.max_size_possible = '".Files::$max_size_possible."';
                 pyro.files.max_size_allowed = '".Files::$max_size_allowed."';
                 pyro.files.valid_extensions = '".implode('|', $allowed_extensions)."';
